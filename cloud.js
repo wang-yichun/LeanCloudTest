@@ -28,7 +28,13 @@ AV.Cloud.define('get_one_dic', function(request, response) {
     var query = Character.query;
     query.get(request.params.oid).then(function (item) {
         console.log(item);
-        response.success(item);
+
+        var dic = {
+            str : 'hello',
+            int : 99
+        };
+
+        response.success(dic);
     }, function (error) {
         console.error(error.message);
         response.fail();
