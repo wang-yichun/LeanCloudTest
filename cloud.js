@@ -15,8 +15,7 @@ AV.Cloud.define('get_one_json', function(request, response) {
     var query = Character.query;
     query.get(request.params.oid).then(function (item) {
         console.log(item);
-        response.success(item);
-        return item._hashedJSON;
+        response.success(item._hashedJSON);
     }, function (error) {
         console.error(error.message);
         response.fail();
@@ -30,7 +29,6 @@ AV.Cloud.define('get_one_dic', function(request, response) {
     query.get(request.params.oid).then(function (item) {
         console.log(item);
         response.success(item);
-        return item.attributes;
     }, function (error) {
         console.error(error.message);
         response.fail();
