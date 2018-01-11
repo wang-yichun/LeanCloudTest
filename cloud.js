@@ -15,7 +15,7 @@ AV.Cloud.define('get_one_json', function(request, response) {
     var query = Character.query;
     query.get(request.params.oid).then(function (item) {
         console.log(item);
-        response.success(item._hashedJSON);
+        response.success(JSON.stringify(item));
     }, function (error) {
         console.error(error.message);
         response.fail();
