@@ -12,8 +12,8 @@ AV.Cloud.define('hello', function(request) {
 
 AV.Cloud.define('get_one', function(request) {
     console.log(request.params);
-    var query = new AV.query(Character);
-    query.get('5a54602067f3560062e6de00').then(function (item) {
+    var query = Character.query;
+    query.get(request.params.oid).then(function (item) {
         return item;
     }, function (error) {
         console.error(error.message)
