@@ -10,25 +10,29 @@ AV.Cloud.define('hello', function(request) {
     return 'Hello world!';
 });
 
-AV.Cloud.define('get_one_json', function(request) {
+AV.Cloud.define('get_one_json', function(request, response) {
     console.log(request.params);
     var query = Character.query;
     query.get(request.params.oid).then(function (item) {
         console.log(item);
+        response.success(item);
         return item._hashedJSON;
     }, function (error) {
-        console.error(error.message)
+        console.error(error.message);
+        response.fail();
     });
 });
 
 
-AV.Cloud.define('get_one_dic', function(request) {
+AV.Cloud.define('get_one_dic', function(request, response) {
     console.log(request.params);
     var query = Character.query;
     query.get(request.params.oid).then(function (item) {
         console.log(item);
+        response.success(item);
         return item.attributes;
     }, function (error) {
-        console.error(error.message)
+        console.error(error.message);
+        response.fail();
     });
 });
