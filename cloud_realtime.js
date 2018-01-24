@@ -26,12 +26,13 @@ AV.Cloud.define('get_conversation_online_count', function(request, response) {
 
             if (conversations.length === 1) {
                 var conversation = conversations[0];
+                console.log(conversation);
                 conversation.count().then(function (count) {
                     result[cid] = {count: count, cid: conversation.id};
                     finishCheck();
                 });
             } else {
-                result[cid] = {count: 0}
+                result[cid] = {count: 0};
                 finishCheck();
             }
         }).catch(console.error.bind(console));
