@@ -41,4 +41,9 @@ AV.Cloud.define('get_conversation_online_count', function(request, response) {
 
 AV.Cloud.define('get_conversation_objectid', function (request, response) {
     console.log(request.params);
+    var club_names = request.params['club_names'];
+    var query = AV.Conversation.query.containedIn('name', club_names);//equalTo('name', cid);
+    query.find().then(function (conversations) {
+        response.success(conversations);
+    }).catch(console.error.bind(console));
 });
