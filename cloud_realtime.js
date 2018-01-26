@@ -38,3 +38,7 @@ AV.Cloud.define('get_conversation_online_count', function(request, response) {
         }).catch(console.error.bind(console));
     }
 });
+
+AV.Cloud.define('get_conversation_objectid', function (request, response) {
+    console.log(request.params);
+});
